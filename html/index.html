@@ -4,10 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tasky</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss"></style>
 </head>
-<body>
 
-    
-    <script src="../js/tasks.js"></script>
+<body class="bg-gradient-to-br from-black via-gray-900 to-purple-800 text-white min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 p-6 bg-black bg-opacity-50 border-r border-purple-500">
+    <!-- w-64        → ancho fijo de 16rem (256px) -->
+    <!-- p-6         → padding interno de 1.5rem -->
+    <!-- bg-black    → fondo negro -->
+    <!-- bg-opacity-50 → opacidad del fondo (para ver el gradiente detrás) -->
+    <!-- border-r    → borde en el lado derecho -->
+    <!-- border-purple-500 → color del borde en púrpura medio -->
+
+    <h2 class="text-xl font-bold mb-4">Categorías</h2>
+    <!-- text-xl     → tamaño de letra grande -->
+    <!-- font-bold   → texto en negrita -->
+    <!-- mb-4        → margen inferior -->
+
+    <ul id="categoryList" class="space-y-2">
+      <!-- space-y-2  → separación vertical entre elementos de la lista -->
+
+      <li class="bg-purple-700 bg-opacity-30 p-2 rounded">Personal</li>
+      <!-- bg-purple-700       → fondo púrpura oscuro -->
+      <!-- bg-opacity-30       → opacidad baja para suavizar -->
+      <!-- p-2                 → padding -->
+      <!-- rounded             → bordes redondeados -->
+
+      <li class="bg-purple-700 bg-opacity-30 p-2 rounded">Trabajo</li>
+      <li class="bg-purple-700 bg-opacity-30 p-2 rounded">Estudio</li>
+    </ul>
+
+    <button id="addCategoryBtn" class="mt-6 w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded transition duration-300">
+      <!-- mt-6             → margen superior -->
+      <!-- w-full           → ancho completo -->
+      <!-- bg-purple-600    → color de fondo -->
+      <!-- hover:bg-purple-700 → cambio de color al pasar el cursor -->
+      <!-- text-white       → texto blanco -->
+      <!-- font-semibold    → semi-negrita -->
+      <!-- py-2             → padding vertical -->
+      <!-- rounded          → bordes redondeados -->
+      <!-- transition       → animaciones suaves -->
+      <!-- duration-300     → duración de la transición 300ms -->
+      Añadir Categoría
+    </button>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex-1 p-8">
+    <!-- flex-1       → ocupa todo el espacio restante del flex -->
+    <!-- p-8          → padding interno amplio -->
+
+    <h1 class="text-3xl font-bold mb-6">Mis Tareas</h1>
+    <!-- text-3xl     → tamaño grande de fuente -->
+    <!-- font-bold    → negrita -->
+    <!-- mb-6         → margen inferior -->
+
+    <button id="addTaskBtn" class="mb-4 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded transition duration-300">
+      <!-- mb-4             → margen inferior -->
+      <!-- bg-indigo-500    → fondo azul violeta -->
+      <!-- hover:bg-indigo-600 → más oscuro al hacer hover -->
+      <!-- text-white        → texto blanco -->
+      <!-- font-semibold     → semi-negrita -->
+      <!-- py-2 px-4         → padding vertical y horizontal -->
+      <!-- rounded           → bordes redondeados -->
+      <!-- transition duration-300 → animación suave -->
+      Añadir Tarea
+    </button>
+
+    <ul id="taskList" class="space-y-3">
+      <!-- space-y-3     → espacio vertical entre tareas -->
+
+      <li class="bg-white bg-opacity-10 p-4 rounded shadow text-black">
+        <!-- bg-white bg-opacity-10 → fondo claro translúcido -->
+        <!-- p-4                   → padding interno -->
+        <!-- rounded               → bordes redondeados -->
+        <!-- shadow                → sombra leve -->
+        Comprar pan
+      </li>
+
+      <li class="bg-white bg-opacity-10 p-4 rounded shadow text-black">
+        Estudiar HTML
+      </li>
+    </ul>
+  </main>
+
+  <script src="../js/crud/cat.js"></script>
+  <script src="../js/crud/tasks.js"></script>
+  
 </body>
 </html>
