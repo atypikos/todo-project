@@ -10,6 +10,7 @@ export async function createTask(task) {
     });
 
     const data = await response.json();
+    return data;
 }
 
 
