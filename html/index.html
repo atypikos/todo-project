@@ -67,7 +67,7 @@
     <!-- font-bold    → negrita -->
     <!-- mb-6         → margen inferior -->
 
-    <button id="addTaskBtn" class="mb-4 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded transition duration-300">
+    <button id="openModal" class="mb-4 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded transition duration-300 cursor-pointer">
       <!-- mb-4             → margen inferior -->
       <!-- bg-indigo-500    → fondo azul violeta -->
       <!-- hover:bg-indigo-600 → más oscuro al hacer hover -->
@@ -96,8 +96,65 @@
     </ul>
   </main>
 
+<!-- Fondo oscuro con opacidad: fondo del popup -->
+<div id="modal" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 hidden">
+  <!-- fixed inset-0      → posición absoluta que cubre toda la pantalla -->
+  <!-- bg-black bg-opacity-60 → fondo oscuro semitransparente -->
+  <!-- flex items-center justify-center → centra el contenido -->
+
+  <!-- Contenedor del popup -->
+  <div class="bg-gray-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <!-- bg-gray-900       → fondo oscuro -->
+    <!-- text-white        → texto blanco -->
+    <!-- p-6               → padding interno -->
+    <!-- rounded-lg        → bordes redondeados -->
+    <!-- shadow-lg         → sombra profunda -->
+    <!-- w-full max-w-md   → ancho responsivo -->
+
+    <!-- Título -->
+    <h2 class="text-2xl font-bold mb-4">Añadir tarea</h2>
+
+    <!-- Formulario -->
+    <form id="taskForm" class="space-y-4">
+      <!-- space-y-4 → separación vertical entre campos -->
+
+      <!-- Nombre de la tarea -->
+      <div>
+        <label for="taskName" class="block mb-1">Nombre de la tarea</label>
+        <input type="text" id="taskName" name="taskName" placeholder="Esta es mi tarea" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+      </div>
+
+      <!-- Descripción -->
+      <div>
+        <label for="taskDesc" class="block mb-1">Descripción</label>
+        <textarea id="taskDesc" name="taskDesc" placeholder="Este es un ejemplo de lo que hace mi tarea" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+      </div>
+
+      <!-- Selector de categoría -->
+      <div>
+        <label for="taskCategory" class="block mb-1">Categoría</label>
+        <select id="taskCategory" name="taskCategory" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+          <option value="personal">Personal</option>
+          <option value="trabajo">Trabajo</option>
+          <option value="estudio">Estudio</option>
+        </select>
+      </div>
+
+      <!-- Botones -->
+      <div class="flex justify-end gap-2 pt-4">
+        <button type="button" id="cancelBtn" class="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded transition duration-300 cursor-pointer">
+          Cancelar Tarea
+        </button>
+        <button id="addTaskBtn" type="submit" class="bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded transition duration-300 cursor-pointer">
+          Añadir Tarea
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
   <script src="../js/crud/cat.js"></script>
   <script src="../js/crud/tasks.js"></script>
-  
+  <script type="module" src="../js/index-task.js"></script>
+  <script src="../js/index-cats.js"></script>
 </body>
 </html>

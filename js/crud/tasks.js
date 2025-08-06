@@ -2,7 +2,7 @@ const TASKS_API = "http://localhost:3000/tasks";
 
 // CREATE (CRUD)
 
-async function createTask(task) {
+export async function createTask(task) {
     const response = await fetch(TASKS_API, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
