@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tasky</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss"></style>
+</head>
+
+<body class="bg-gradient-to-br from-black via-gray-900 to-purple-800 text-white min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 p-6 bg-black bg-opacity-50 border-r border-purple-500">
+    <!-- w-64        → ancho fijo de 16rem (256px) -->
+    <!-- p-6         → padding interno de 1.5rem -->
+    <!-- bg-black    → fondo negro -->
+    <!-- bg-opacity-50 → opacidad del fondo (para ver el gradiente detrás) -->
+    <!-- border-r    → borde en el lado derecho -->
+    <!-- border-purple-500 → color del borde en púrpura medio -->
+
+    <h2 class="text-xl font-bold mb-4">Categorías</h2>
+    <!-- text-xl     → tamaño de letra grande -->
+    <!-- font-bold   → texto en negrita -->
+    <!-- mb-4        → margen inferior -->
+
+    <ul id="categoryList" class="space-y-2">
+      <!-- space-y-2  → separación vertical entre elementos de la lista -->
+
+      <li class="bg-purple-700 bg-opacity-30 p-2 rounded">Personal</li>
+      <!-- bg-purple-700       → fondo púrpura oscuro -->
+      <!-- bg-opacity-30       → opacidad baja para suavizar -->
+      <!-- p-2                 → padding -->
+      <!-- rounded             → bordes redondeados -->
+
+      <li class="bg-purple-700 bg-opacity-30 p-2 rounded">Trabajo</li>
+      <li class="bg-purple-700 bg-opacity-30 p-2 rounded">Estudio</li>
+    </ul>
+
+    <button id="addCategoryBtn" class="mt-6 w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 rounded transition duration-300">
+      <!-- mt-6             → margen superior -->
+      <!-- w-full           → ancho completo -->
+      <!-- bg-purple-600    → color de fondo -->
+      <!-- hover:bg-purple-700 → cambio de color al pasar el cursor -->
+      <!-- text-white       → texto blanco -->
+      <!-- font-semibold    → semi-negrita -->
+      <!-- py-2             → padding vertical -->
+      <!-- rounded          → bordes redondeados -->
+      <!-- transition       → animaciones suaves -->
+      <!-- duration-300     → duración de la transición 300ms -->
+      Añadir Categoría
+    </button>
+  </aside>
+
+  <!-- Main content -->
+  <main class="flex-1 p-8">
+    <!-- flex-1       → ocupa todo el espacio restante del flex -->
+    <!-- p-8          → padding interno amplio -->
+
+    <h1 class="text-3xl font-bold mb-6">Mis Tareas</h1>
+    <!-- text-3xl     → tamaño grande de fuente -->
+    <!-- font-bold    → negrita -->
+    <!-- mb-6         → margen inferior -->
+
+    <button id="openModal" class="mb-4 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2 px-4 rounded transition duration-300 cursor-pointer">
+      <!-- mb-4             → margen inferior -->
+      <!-- bg-indigo-500    → fondo azul violeta -->
+      <!-- hover:bg-indigo-600 → más oscuro al hacer hover -->
+      <!-- text-white        → texto blanco -->
+      <!-- font-semibold     → semi-negrita -->
+      <!-- py-2 px-4         → padding vertical y horizontal -->
+      <!-- rounded           → bordes redondeados -->
+      <!-- transition duration-300 → animación suave -->
+      Añadir Tarea
+    </button>
+
+    <ul id="taskList" class="space-y-3">
+      <!-- space-y-3     → espacio vertical entre tareas -->
+
+<li class="bg-white bg-opacity-10 p-4 rounded shadow text-black flex items-center justify-between">
+  <div class="flex items-center gap-3">
+    <!-- Icono editar -->
+    <button class="edit-btn text-indigo-600 hover:text-indigo-800" title="Editar tarea">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536M9 13.5l6-6 3 3-6 6H9v-3z" />
+      </svg>
+    </button>
+
+    <!-- Icono eliminar -->
+    <button class="delete-btn text-red-600 hover:text-red-800" title="Eliminar tarea">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5-4h4m-4 0a1 1 0 00-1 1v1h6V4a1 1 0 00-1-1m-4 0h4" />
+      </svg>
+    </button>
+
+    <!-- Texto de la tarea -->
+    <span>Comprar pan</span>
+  </div>
+</li>
+
+    </ul>
+  </main>
+
+<!-- Fondo oscuro con opacidad: fondo del popup -->
+<div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+  <!-- fixed inset-0      → posición absoluta que cubre toda la pantalla -->
+  <!-- bg-black bg-opacity-60 → fondo oscuro semitransparente -->
+  <!-- flex items-center justify-center → centra el contenido -->
+
+  <!-- Contenedor del popup -->
+  <div class="bg-gray-900 text-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <!-- bg-gray-900       → fondo oscuro -->
+    <!-- text-white        → texto blanco -->
+    <!-- p-6               → padding interno -->
+    <!-- rounded-lg        → bordes redondeados -->
+    <!-- shadow-lg         → sombra profunda -->
+    <!-- w-full max-w-md   → ancho responsivo -->
+
+    <!-- Título -->
+    <h2 class="text-2xl font-bold mb-4">Añadir tarea</h2>
+
+    <!-- Formulario -->
+    <form id="taskForm" class="space-y-4">
+      <!-- space-y-4 → separación vertical entre campos -->
+
+      <!-- Nombre de la tarea -->
+      <div>
+        <label for="taskName" class="block mb-1">Nombre de la tarea</label>
+        <input type="text" id="taskName" name="taskName" placeholder="Esta es mi tarea" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500" />
+      </div>
+
+      <!-- Descripción -->
+      <div>
+        <label for="taskDesc" class="block mb-1">Descripción</label>
+        <textarea id="taskDesc" name="taskDesc" placeholder="Este es un ejemplo de lo que hace mi tarea" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+      </div>
+
+      <!-- Selector de categoría -->
+      <div>
+        <label for="taskCategory" class="block mb-1">Categoría</label>
+        <select id="taskCategory" name="taskCategory" class="w-full p-2 rounded bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500">
+          <option value="personal">Personal</option>
+          <option value="trabajo">Trabajo</option>
+          <option value="estudio">Estudio</option>
+        </select>
+      </div>
+
+      <!-- Botones -->
+      <div class="flex justify-end gap-2 pt-4">
+        <button type="button" id="cancelBtn" class="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded transition duration-300 cursor-pointer">
+          Cancelar Tarea
+        </button>
+        <button id="addTaskBtn" type="submit" class="bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded transition duration-300 cursor-pointer">
+          Añadir Tarea
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+  <script type="module" src="../js/index-task.js"></script>
+  <script src="../js/index-cats.js"></script>
+</body>
+</html>

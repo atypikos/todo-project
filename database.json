@@ -1,16 +1,5 @@
 {
-  "tasks": [
-    {
-      "taskTitle": "task1"
-    },
-    {
-      "id": "a9d9"
-    },
-    {
-      "id": "4211",
-      "taskTitle": "task2"
-    }
-  ],
+  "tasks": [],
   "categories": [
     {
       "id": "c5ff",
